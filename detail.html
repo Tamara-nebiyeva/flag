@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div id="detCard" class="flex justify-center py-[40px]"></div>
+    <script src="./assets/js/data.js"></script>
+    <script>
+        const qParams = location.search
+        const alpCode = new URLSearchParams(qParams).get('name')
+        const country = data.find(item => item.alpha3Code == alpCode)
+        detCard.innerHTML = `<div class="max-w-xs rounded-md shadow-md bg-gray-50 text-gray-800">
+            <a>
+                <img src="${country.flag}" alt="" class="object-cover object-center w-full rounded-t-md h-72 bg-gray-500">
+            </a>
+                <div class="flex flex-col justify-between p-6 space-y-8">
+                    <div class="space-y-2">
+                        <span class="block text-xs font-medium tracking-widest uppercase text-violet-600">${country.region}</span>
+                        <h2 class="text-3xl font-semibold tracking-wide truncate">${country.name}</h2>
+                        <h2 class="text-2xl text-[#EF3340] font-semibold tracking-wide">${country.capital}</h2>
+                        <p><b>Area:</b> ${country.area} km<sup>2</sup></p>
+                        <p><b>Population:</b> ${country.population}</p>
+                    </div>
+                    <button class="w-full p-3 font-semibold tracking-wide rounded-md bg-violet-600 text-white">Read more</button>
+                </div>
+            </div>`
+    </script>
+</body>
+</html>
